@@ -11,8 +11,9 @@ app.set("view engine", "ejs");
 app.use("/static", express.static("public"));
 app.use(bodyParser.urlencoded({extended: true}));
 
+let url = process.env.DATABASEURL;
 mongoose.set("useFindAndModify", false);
-mongoose.connect(process.env.DB_CONNECT, { useUnifiedTopology: true, useNewUrlParser: true }, () => {
+mongoose.connect(, { useUnifiedTopology: true, useNewUrlParser: true }, () => {
 	console.log("Connected to db!");
 });
 
@@ -55,6 +56,6 @@ app.route("/remove/:id").get((req, res) => {
 });
 
 
-app.listen(4080, function(){
-	console.log("APP.JS START");
+app.listen(process.env.PORT, process.env.IP, function(){
+    console.log("YelpCamp server has started!");
 });
