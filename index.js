@@ -5,7 +5,7 @@ var express     = require("express"),
 	dotenv		= require("dotenv"),
 	TodoTask    = require("./models/TodoTask");
 	
-dotenv.config();
+// dotenv.config();
 
 app.set("view engine", "ejs");
 app.use("/static", express.static("public"));
@@ -57,5 +57,5 @@ app.route("/remove/:id").get((req, res) => {
 
 
 app.listen(process.env.PORT, process.env.IP, function(){
-    console.log("YelpCamp server has started!");
+    console.log("Server has started!");
 });
