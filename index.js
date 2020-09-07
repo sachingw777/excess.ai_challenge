@@ -10,22 +10,11 @@ dotenv.config();
 app.set("view engine", "ejs");
 app.use("/static", express.static("public"));
 app.use(bodyParser.urlencoded({extended: true}));
-// app.use(express.urlencoded({ extended: true }));
 
 mongoose.set("useFindAndModify", false);
-const uri = "mongodb+srv://todoapp:EzEeiCiMeD3ZzjrA@cluster0.s4obv.gcp.mongodb.net/todo_db?retryWrites=true&w=majority";
-mongoose.connect(uri, { useUnifiedTopology: true, useNewUrlParser: true }, () => {
+mongoose.connect(process.env.DB_CONNECT, { useUnifiedTopology: true, useNewUrlParser: true }, () => {
 	console.log("Connected to db!");
 });
-
-// const MongoClient = require('mongodb').MongoClient;
-// var uri = "mongodb+srv://todo_app:Ltgf6XeNPOdkId6f@cluster0.s4obv.gcp.mongodb.net/todo_db?retryWrites=true&w=majority;"
-// const client = new MongoClient(uri, { useUnifiedTopology: true, useNewUrlParser: true });
-// client.connect(err => {
-//   const collection = client.db("test").collection("devices");
-//   // perform actions on the collection object
-//   client.close();
-// });/
 
 app.get("/", (req, res) => {
 	TodoTask.find({}, (err, tasks) => {
