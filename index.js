@@ -13,7 +13,7 @@ app.use(bodyParser.urlencoded({extended: true}));
 
 let url = process.env.DATABASEURL;
 mongoose.set("useFindAndModify", false);
-mongoose.connect(, { useUnifiedTopology: true, useNewUrlParser: true }, () => {
+mongoose.connect(url, { useUnifiedTopology: true, useNewUrlParser: true }, () => {
 	console.log("Connected to db!");
 });
 
