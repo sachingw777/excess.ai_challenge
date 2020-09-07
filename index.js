@@ -11,9 +11,9 @@ app.set("view engine", "ejs");
 app.use("/static", express.static("public"));
 app.use(bodyParser.urlencoded({extended: true}));
 
-let url = process.env.DATABASEURL;
+let uri = process.env.DATABASEURL;
 mongoose.set("useFindAndModify", false);
-mongoose.connect(url, { useUnifiedTopology: true, useNewUrlParser: true }, () => {
+mongoose.connect(uri, { useUnifiedTopology: true, useNewUrlParser: true }, () => {
 	console.log("Connected to db!");
 });
 
